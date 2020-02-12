@@ -48,6 +48,7 @@ class ToolbarFragment : Fragment(), SeekBar.OnSeekBarChangeListener {
     private fun buttonClicked(view: View){
         activityCallback?.onButtonClick(seekvalue, editText1.text.toString())
 
+
     }
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
