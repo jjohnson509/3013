@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ColorFinder</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="colorR_value">0</string>
+    <string name="colorG_value">0</string>
+    <string name="colorB_value">0</string>
+</resources>
