@@ -116,18 +116,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
 
 
 
-//                val inputStream: InputStream = file.inputStream()
-//                val colorList = mutableListOf<String>()
-//                inputStream.bufferedReader().useLines { colors -> colors.forEach { colorList.add(it) } }
-//                colorList.forEach {
-//                    println("- $it")
-//                    if(!colorArray.contains(it)){
-//                        colorArray.add(it)
-//                    }
-//                    else{
-//                        Toast.makeText(this, "Color already exists!", Toast.LENGTH_SHORT).show()
-//                    }}
-//                println(colorArray)
+
                 Toast.makeText(this, "Loaded", Toast.LENGTH_SHORT).show()
 
             } catch (e: FileNotFoundException) {
