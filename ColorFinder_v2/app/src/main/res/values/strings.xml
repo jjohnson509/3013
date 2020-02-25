@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ColorFinder</string>
+    <string name="red">Red</string>
+    <string name="green">Green</string>
+    <string name="blue">Blue</string>
+    <string name="colorR_value">0</string>
+    <string name="colorG_value">0</string>
+    <string name="colorB_value">0</string>
+    <string name="color_name">Color Name</string>
+    <string name="color_value">Color Value</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
