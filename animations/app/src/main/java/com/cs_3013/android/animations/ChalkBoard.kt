@@ -39,6 +39,7 @@ class ChalkBoard//Constructor - initialize this View
     private var currColor = ChalkColor.randomChalkColor().color  //current color to use
     private var nextColor: ChalkColor  //if animating color change, new color we are heading for
     private var oldColor: ChalkColor? = null   //last color we used
+
     private var paint = Paint()  //to hold color for rendering
     private var style = RAW  //style holds current type of animation
     private var colorFlag = false     //set when animating color
@@ -209,6 +210,8 @@ class ChalkBoard//Constructor - initialize this View
         invalidate()
     }
 
+
+
     //
     /**
      * setAngle sets the current angle to use for a rotation at each step in the animation
@@ -219,6 +222,12 @@ class ChalkBoard//Constructor - initialize this View
     fun setAngle(value: Float) {
         angle = value
         this.rotation = angle
+        invalidate()
+    }
+
+    fun changeColor(r:Int, g :Int, b: Int){
+        currColor = ChalkColor.setChalkColor(r, g, b).color
+        paint.color = currColor
         invalidate()
     }
 

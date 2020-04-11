@@ -13,4 +13,5 @@
     <string name="moverotatecolor_anim">Move and Rotate, Then Color</string>
     <string name="teleport">Teleport</string>
     <string name="shrink">Shrink</string>
+    <string name="load_color">Load Color</string>
 </resources>

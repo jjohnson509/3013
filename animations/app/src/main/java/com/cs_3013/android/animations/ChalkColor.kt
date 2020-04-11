@@ -34,6 +34,14 @@ class ChalkColor (c: Int) {
         return Color.argb(a, r, g, b)
     }
 
+//    fun change(r: Int, g: Int, b: Int): ChalkColor{
+//        val red = r.toInt()
+//        val green = g.toInt()
+//        val blue = b.toInt()
+//        val c = Color.argb(255, red, green, blue)
+//        return ChalkColor(c)
+//    }
+
     companion object {
 
         /**
@@ -51,6 +59,13 @@ class ChalkColor (c: Int) {
             val c = Color.argb(255, 255, 255,255)
             return ChalkColor(c)
         }
+
+        fun setChalkColor(r: Int, g: Int, b: Int): ChalkColor{
+            val c = Color.argb(255, r, g, b)
+            return ChalkColor(c)
+        }
+
+
     }
 
 }

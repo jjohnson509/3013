@@ -2,13 +2,16 @@ package com.cs_3013.android.colorfinder
 
 
 import android.R.color
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.SeekBar
 import android.widget.Toast
@@ -28,6 +31,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        send_button.visibility = View.INVISIBLE
 
 
         seekBar_red.setOnSeekBarChangeListener(this)
@@ -38,7 +42,23 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         supportActionBar?.setDisplayUseLogoEnabled(true)
 
 
+
+        val info = intent.extras
+        val sendBut = findViewById<Button>(R.id.send_button)
+        if (info != null){
+            if(info.containsKey("Request Code")){
+                println("it contains the key!!")
+                sendBut.visibility = View.VISIBLE
+                sendBut.setOnClickListener{
+                    finish()
+                }
+            }
+            else{
+                sendBut.visibility = View.GONE
+            }
+        }
     }
+
 
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
@@ -48,7 +68,7 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             seekBar_blue -> colorB.text = "$progress"
         }
 
-        var newColor: Int = Color.rgb(
+        val newColor: Int = Color.rgb(
             colorR.text.toString().toInt(),
             colorG.text.toString().toInt(),
             colorB.text.toString().toInt()
@@ -107,35 +127,17 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
             colorListFragment.getSavedColors()
             colorListFragment.updateColors()
             return true
+
+
         } else if (id == R.id.load_action) {
             try {
                 colorListFragment.getSavedColors()
                 colorListFragment.updateColors()
-
-
-
-
-
-//                val inputStream: InputStream = file.inputStream()
-//                val colorList = mutableListOf<String>()
-//                inputStream.bufferedReader().useLines { colors -> colors.forEach { colorList.add(it) } }
-//                colorList.forEach {
-//                    println("- $it")
-//                    if(!colorArray.contains(it)){
-//                        colorArray.add(it)
-//                    }
-//                    else{
-//                        Toast.makeText(this, "Color already exists!", Toast.LENGTH_SHORT).show()
-//                    }}
-//                println(colorArray)
                 Toast.makeText(this, "Loaded", Toast.LENGTH_SHORT).show()
 
             } catch (e: FileNotFoundException) {
                 Toast.makeText(this, "No Existing Colors!", Toast.LENGTH_SHORT).show()
             }
-
-
-
 
             return true
         } else
@@ -160,6 +162,24 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         seekBar_blue.progress = blue
         colorSwatch.setBackgroundColor(tempColor)
 
+    }
+
+    private fun getColorText(): String{
+        var tempColor = ((colorSwatch.background as ColorDrawable).color)
+        val red: Int = tempColor shr 16 and 0xFF
+        val green: Int = tempColor shr 8 and 0xFF
+        val blue: Int = tempColor shr 0 and 0xFF
+        val sendText = "$red $green $blue"
+        return sendText
+    }
+
+    override fun finish() {
+        val sendIntent = Intent().apply{
+            putExtra("colorText", getColorText())
+            type = "text/plain"
+        }
+        setResult(RESULT_OK, sendIntent)
+        super.finish()
     }
 
 }

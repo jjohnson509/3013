@@ -69,4 +69,9 @@
         android:title="@string/shrink"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/load_color"
+        android:title="@string/load_color"
+        app:showAsAction="ifRoom"/>
+
 </menu>

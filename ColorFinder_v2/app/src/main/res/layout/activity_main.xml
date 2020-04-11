@@ -25,6 +25,17 @@
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="false"
             android:background="#000000" />
+
+        <Button
+            android:id="@+id/send_button"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="11dp"
+            android:layout_marginEnd="26dp"
+            android:layout_toStartOf="@+id/colorSwatch"
+            android:text="@string/send"
+            tools:visibility="gone" />
     </RelativeLayout>
 
     <LinearLayout
