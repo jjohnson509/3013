@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity(), SeekBar.OnSeekBarChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         send_button.visibility = View.INVISIBLE
-
-
         seekBar_red.setOnSeekBarChangeListener(this)
         seekBar_green.setOnSeekBarChangeListener(this)
         seekBar_blue.setOnSeekBarChangeListener(this)
